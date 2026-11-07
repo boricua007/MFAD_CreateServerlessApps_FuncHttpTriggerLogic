@@ -263,14 +263,6 @@ This pattern works for any Azure service with a binding extension:
 
 **Queue Message**: `User Bob accessed the function at 2026-11-07T16:21:00.000Z`
 
-## Security Considerations
-
-- The HTTP trigger is anonymous for this learning exercise
-- Connection strings are stored in app settings, not in code
-- Never commit secrets or connection strings to version control
-- Use managed identities in production for enhanced security
-- Implement proper authentication and authorization for production functions
-
 ## Key Concepts Demonstrated
 
 - The difference between a local Functions project and an Azure Function App
