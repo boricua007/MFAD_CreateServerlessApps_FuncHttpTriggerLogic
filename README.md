@@ -23,13 +23,13 @@ This project teaches the "Connect to Services" pattern from the Microsoft Azure 
 
 ## Features
 
-- PowerShell HTTP trigger that accepts `GET` and `POST` requests
-- Reads a name from the query string or request body
-- Returns a personalized greeting or a default response
-- Output binding to Azure Storage Queue - sends a message when a user accesses the function
-- Local run and debugging support through Azure Functions Core Tools
-- Deployment to an Azure Function App from Visual Studio Code
-- Demonstrates the "Connect to Services" pattern using bindings
+- ✅ PowerShell HTTP trigger that accepts `GET` and `POST` requests
+- ✅ Reads a name from the query string or request body
+- ✅ Returns a personalized greeting or a default response
+- ✅ Output binding to Azure Storage Queue - sends a message when a user accesses the function
+- ✅ Local run and debugging support through Azure Functions Core Tools
+- ✅ Deployment to an Azure Function App from Visual Studio Code
+- ✅ Demonstrates the "Connect to Services" pattern using bindings
 
 ## Getting Started
 
