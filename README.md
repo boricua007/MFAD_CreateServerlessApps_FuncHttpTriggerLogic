@@ -77,9 +77,9 @@ Messages will be queued in the local storage emulator and can be viewed in Azure
 
 ### Deploy to Azure
 
-Create or select a Function App configured for PowerShell Functions runtime 4. In Visual Studio Code, run **Azure Functions: Deploy to Function App** from the Command Palette, select this project and the target app, and confirm the deployment. Publishing replaces the deployed contents of the selected app. Do not upload local development settings as part of deployment; configure the Azure app's settings in Azure.
+Create or select a Function App configured for PowerShell Functions runtime 4. In Visual Studio Code, run Azure Functions: Deploy to Function App from the Command Palette, select this project and the target app, and confirm the deployment. Publishing replaces the deployed contents of the selected app. Do not upload local development settings as part of deployment; configure the Azure app's settings in Azure.
 
-After deployment, use **Azure Functions: Copy Function URL** in Visual Studio Code or **Get function URL** in the Azure portal to retrieve the endpoint.
+After deployment, use Azure Functions: Copy Function URL in Visual Studio Code or Get function URL in the Azure portal to retrieve the endpoint.
 
 #### Post-Deployment
 
@@ -91,8 +91,8 @@ https://func-az204-FuncHttpTriggerLogic.azurewebsites.net/api/FuncHttpTriggerLog
 
 View queued messages in the Azure Portal:
 1. Open your Storage Account
-2. Navigate to **Queues**
-3. Select **myqueue**
+2. Navigate to Queues
+3. Select myqueue
 4. View messages from each function invocation
 
 ## HTTP Endpoint
@@ -139,10 +139,10 @@ The HTTP trigger is anonymous for this learning exercise. Anyone who can reach t
 
 ### Understanding Bindings
 
-**Bindings** are the Azure Functions mechanism for connecting to other Azure services without explicit connection code. They are configured declaratively in `function.json`.
+Bindings are the Azure Functions mechanism for connecting to other Azure services without explicit connection code. They are configured declaratively in `function.json`.
 
-- **Input bindings**: Read data from services
-- **Output bindings**: Send data to services
+- Input bindings: Read data from services
+- Output bindings: Send data to services
 
 ### This Project's Bindings
 
@@ -156,9 +156,9 @@ The HTTP trigger is anonymous for this learning exercise. Anyone who can reach t
   "methods": ["get", "post"]
 }
 ```
-- **Type**: httpTrigger
-- **Direction**: in (input)
-- **Purpose**: Triggers the function when an HTTP request arrives
+- Type: httpTrigger
+- Direction: in (input)
+- Purpose: Triggers the function when an HTTP request arrives
 
 #### 2. HTTP Response (Output Binding)
 ```json
@@ -168,11 +168,11 @@ The HTTP trigger is anonymous for this learning exercise. Anyone who can reach t
   "name": "Response"
 }
 ```
-- **Type**: http
-- **Direction**: out (output)
-- **Purpose**: Sends the HTTP response back to the client
+- Type: http
+- Direction: out (output)
+- Purpose: Sends the HTTP response back to the client
 
-#### 3. Queue Storage (Output Binding) ⭐ **NEW - Connects to Azure Service**
+#### 3. Queue Storage (Output Binding) ⭐ NEW - Connects to Azure Service
 ```json
 {
   "type": "queue",
@@ -182,10 +182,10 @@ The HTTP trigger is anonymous for this learning exercise. Anyone who can reach t
   "connection": "AzureWebJobsStorage"
 }
 ```
-- **Type**: queue
-- **Direction**: out (output)
-- **Purpose**: Sends messages to Azure Storage Queue
-- **Connection**: Uses the `AzureWebJobsStorage` connection string from app settings
+- Type: queue
+- Direction: out (output)
+- Purpose: Sends messages to Azure Storage Queue
+- Connection: Uses the `AzureWebJobsStorage` connection string from app settings
 
 ### Function Flow
 
@@ -193,11 +193,11 @@ The HTTP trigger is anonymous for this learning exercise. Anyone who can reach t
 2. `FuncHttpTriggerLogic/function.json` declares:
    - An anonymous HTTP trigger for `GET` and `POST`
    - An HTTP response output binding
-   - **A queue output binding** to `myqueue` in Azure Storage
+   - A queue output binding to `myqueue` in Azure Storage
 3. `FuncHttpTriggerLogic/run.ps1`:
    - Reads `Name` from the query string, then falls back to the request body
    - Creates a default response or personalized greeting
-   - **Sends a message to the queue** using `Push-OutputBinding -Name QueueMessage`
+   - Sends a message to the queue using `Push-OutputBinding -Name QueueMessage`
    - Returns the response with HTTP status `200`
 4. Azure Functions runtime handles all connection management automatically
 
@@ -221,12 +221,12 @@ The runtime handles connection, authentication, and delivery automatically! ✨
 
 ## Connect to Services: Pattern Summary
 
-This project demonstrates the **"Connect to Services"** pattern from the Microsoft Azure Functions documentation:
+This project demonstrates the "Connect to Services" pattern from the Microsoft Azure Functions documentation:
 
-1. **Declare the binding** in `function.json`
-2. **Add connection settings** in `local.settings.json` (local) or app settings (Azure)
-3. **Use the binding** via `Push-OutputBinding` in your function code
-4. **No manual connection code needed** - the runtime manages it all
+1. Declare the binding in `function.json`
+2. Add connection settings in `local.settings.json` (local) or app settings (Azure)
+3. Use the binding via `Push-OutputBinding` in your function code
+4. No manual connection code needed - the runtime manages it all
 
 This pattern works for any Azure service with a binding extension:
 - Azure Storage (Queues, Blobs, Tables)
@@ -238,32 +238,30 @@ This pattern works for any Azure service with a binding extension:
 ## Testing Scenarios
 
 ### Scenario 1: Personalized Response with Queue Message
-**Request**: `GET http://localhost:7071/api/FuncHttpTriggerLogic?Name=Alice`
+Request: `GET http://localhost:7071/api/FuncHttpTriggerLogic?Name=Alice`
 
-**Response**: `Hello, Alice. This HTTP triggered function executed successfully.`
+Response: `Hello, Alice. This HTTP triggered function executed successfully.`
 
-**Queue Message**: `User Alice accessed the function at 2026-11-07T16:20:00.000Z`
-
+Queue Message: `User Alice accessed the function at 2026-11-07T16:20:00.000Z`
 
 ### Scenario 2: Default Response (No Name)
-**Request**: `GET http://localhost:7071/api/FuncHttpTriggerLogic`
+Request: `GET http://localhost:7071/api/FuncHttpTriggerLogic`
 
-**Response**: `This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.`
+Response: `This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.`
 
-**Queue Message**: None sent
-
+Queue Message: None sent
 
 ### Scenario 3: POST with JSON Body
-**Request**: `POST http://localhost:7071/api/FuncHttpTriggerLogic`
+Request: `POST http://localhost:7071/api/FuncHttpTriggerLogic`
 
-**Body**: 
+Body: 
 ```json
 {"Name": "Bob"}
 ```
 
-**Response**: `Hello, Bob. This HTTP triggered function executed successfully.`
+Response: `Hello, Bob. This HTTP triggered function executed successfully.`
 
-**Queue Message**: `User Bob accessed the function at 2026-11-07T16:21:00.000Z`
+Queue Message: `User Bob accessed the function at 2026-11-07T16:21:00.000Z`
 
 ## Key Concepts Demonstrated
 
@@ -287,7 +285,7 @@ LinkedIn: https://www.linkedin.com/in/daisyviruetallen/
 
 ---
 
-**Created**: November 2026 | **Runtime**: PowerShell v7.4 | **Platform**: Azure Functions Flex Consumption
+Created: November 2026 | Runtime: PowerShell v7.4 | Platform: Azure Functions Flex Consumption
 
 
 
