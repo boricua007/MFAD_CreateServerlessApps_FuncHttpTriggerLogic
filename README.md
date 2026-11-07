@@ -244,12 +244,14 @@ This pattern works for any Azure service with a binding extension:
 
 **Queue Message**: `User Alice accessed the function at 2026-11-07T16:20:00.000Z`
 
+
 ### Scenario 2: Default Response (No Name)
 **Request**: `GET http://localhost:7071/api/FuncHttpTriggerLogic`
 
 **Response**: `This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.`
 
 **Queue Message**: None sent
+
 
 ### Scenario 3: POST with JSON Body
 **Request**: `POST http://localhost:7071/api/FuncHttpTriggerLogic`
