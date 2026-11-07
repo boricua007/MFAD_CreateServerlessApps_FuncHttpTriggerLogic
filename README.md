@@ -8,15 +8,6 @@
 
 The project demonstrates the end-to-end function workflow: defining the HTTP trigger, response binding, and queue output binding in `function.json`, handling the request and sending messages in `run.ps1`, running and debugging locally with Azure Functions Core Tools, and publishing the project from Visual Studio Code to Azure.
 
-### What You'll Learn
-
-This project teaches the "Connect to Services" pattern from the Microsoft Azure Functions documentation:
-- How to declare service bindings declaratively in `function.json`
-- How to connect to Azure services without explicit connection code
-- How output bindings send data to cloud services
-- Real-world serverless architecture patterns
-- Deployment workflow from local development to Azure production
-
 ## Features
 
 - ✅ PowerShell HTTP trigger that accepts `GET` and `POST` requests
