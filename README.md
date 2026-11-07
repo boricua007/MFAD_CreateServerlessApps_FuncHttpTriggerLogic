@@ -1,10 +1,6 @@
-# MFAD_CreateServerlessApps_FuncHttpTriggerLogic
+# MFAD CreateServerlessApps FuncHttpTriggerLogic
 
 ## Azure Functions: PowerShell HTTP Trigger with Queue Output Binding
-
-### Repository Description
-
-This repository demonstrates connecting Azure Functions to services using bindings — a core concept from the Microsoft Azure AZ-204 certification exam. It extends the basic HTTP trigger pattern by adding a practical output binding to Azure Storage Queue, showing how to integrate serverless functions with cloud services without writing explicit connection code.
 
 ### Overview
 
