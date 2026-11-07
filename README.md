@@ -263,24 +263,6 @@ This pattern works for any Azure service with a binding extension:
 
 **Queue Message**: `User Bob accessed the function at 2026-11-07T16:21:00.000Z`
 
-## Learning Outcomes
-
-After completing this project, you will understand:
-
-- ✅ How to use **Azure Functions bindings** to connect to services
-- ✅ The difference between **input** and **output** bindings
-- ✅ How **queue output bindings** work in practice
-- ✅ How to handle HTTP requests with query parameters and JSON bodies
-- ✅ How to deploy functions from VS Code to Azure
-- ✅ How to view queued messages in the Azure Portal
-
-## Additional Resources
-
-- [Azure Functions bindings documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings)
-- [Azure Queue Storage binding reference](https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue)
-- [Develop Azure Functions using PowerShell](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?pivots=programming-language-powershell)
-- [Connect to services - Microsoft Docs](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=node-v4%2Cpython-v2%2Cisolated-process%2Cquick-create&pivots=programming-language-csharp#create-an-azure-functions-project)
-
 ## Security Considerations
 
 - The HTTP trigger is anonymous for this learning exercise
@@ -289,12 +271,29 @@ After completing this project, you will understand:
 - Use managed identities in production for enhanced security
 - Implement proper authentication and authorization for production functions
 
-## License
+## Key Concepts Demonstrated
 
-This project is provided as a learning resource.
+- The difference between a local Functions project and an Azure Function App
+- HTTP triggers, request inputs, and HTTP response bindings
+- Local development with Azure Functions Core Tools and Azurite
+- Publishing a local function project to an Azure-hosted Function App
+- Local settings versus application settings in Azure
+
+## About
+
+This PowerShell Azure Functions project was built for Microsoft's Create Serverless Applications course, part of the Azure Developer Associate Professional Certificate. It demonstrates serverless HTTP request handling, local testing with Azure Functions Core Tools and Azurite, and deployment to an Azure Function App on the Flex Consumption plan—foundational skills for software developers building and deploying cloud applications with Azure.
+
+## Author
+
+Daisy Viruet-Allen (boricua007)
+
+GitHub: https://github.com/boricua007
+
+LinkedIn: https://www.linkedin.com/in/daisyviruetallen/
 
 ---
 
-**Created**: November 2026  
-**Azure Functions Runtime**: PowerShell v7.4  
-**Platform**: Azure Functions Flex Consumption Plan
+**Created**: November 2026 | **Runtime**: PowerShell v7.4 | **Platform**: Azure Functions Flex Consumption
+
+
+
