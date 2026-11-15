@@ -11,6 +11,7 @@ The project demonstrates the end-to-end function workflow: defining the HTTP tri
 ## Features
 
 - ✅ PowerShell HTTP trigger that accepts `GET` and `POST` requests
+- ✅ Separate `StringResult` HTTP trigger that reports success or failure for a submitted string
 - ✅ Reads a name from the query string or request body
 - ✅ Returns a personalized greeting or a default response
 - ✅ Output binding to Azure Storage Queue - sends a message when a user accesses the function
@@ -72,6 +73,14 @@ Expected response:
 Hello, Daisy. This HTTP triggered function executed successfully.
 ```
 
+The separate `StringResult` function accepts raw text in a `POST` request body. A non-empty string returns `Success` with HTTP 200; an empty or whitespace-only body returns `Failure` with HTTP 400:
+
+```powershell
+Invoke-RestMethod -Method Post -Uri http://localhost:7071/api/StringResult -ContentType "text/plain" -Body "hello"
+```
+
+The existing `FuncHttpTriggerLogic` function remains available at its own endpoint.
+
 Messages sent to queue (when Azurite is running):
 Messages will be queued in the local storage emulator and can be viewed in Azure Storage Explorer.
 
@@ -120,6 +129,9 @@ The HTTP trigger is anonymous for this learning exercise. Anyone who can reach t
 │   ├── function.json
 │   ├── run.ps1
 │   └── sample.dat
+├── StringResult/
+│   ├── function.json
+│   └── run.ps1
 ├── TimerTrigger1/
 │   ├── function.json
 │   ├── run.ps1
@@ -286,6 +298,5 @@ LinkedIn: https://www.linkedin.com/in/daisyviruetallen/
 ---
 
 Created: November 2026 | Runtime: PowerShell v7.4 | Platform: Azure Functions Flex Consumption
-
 
 
