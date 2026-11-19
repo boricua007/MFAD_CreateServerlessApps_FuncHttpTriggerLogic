@@ -8,6 +8,14 @@
       "customPipeName": "AzureFunctionsPSWorker",
       "runspaceId": 1,
       "preLaunchTask": "func: host start"
+    },
+    {
+      "name": "Debug HTTP bindings function",
+      "type": "PowerShell",
+      "request": "attach",
+      "customPipeName": "AzureFunctionsPSWorker",
+      "runspaceId": 1,
+      "preLaunchTask": "Start HTTP bindings function"
     }
   ]
 }
