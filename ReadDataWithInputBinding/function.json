@@ -1,0 +1,23 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get", "post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "blob",
+      "direction": "in",
+      "name": "inputBlob",
+      "path": "samples-workitems/{name}",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}

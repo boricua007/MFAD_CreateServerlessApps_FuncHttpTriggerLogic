@@ -2,6 +2,10 @@
 
 ## Azure Functions: PowerShell HTTP Trigger with Queue Output Binding
 
+### Assignment Note - November 24, 2026
+
+The `HttpInputOutputBindings` function is a step-by-step class exercise that adds an HTTP trigger, an HTTP response output, and an Azure Queue Storage output. It reads `name` from the query string or JSON body, sends a queue message through `Push-OutputBinding -Name msg`, and returns HTTP 200 for a name or HTTP 400 when no name is supplied.
+
 ### Overview
 
 `FuncHttpTriggerLogic` is a serverless HTTP function built with Azure Functions and PowerShell. It demonstrates connecting to Azure services through output bindings. The function accepts anonymous `GET` and `POST` requests, reads a name from the query string or JSON request body, returns a personalized greeting, and sends a message to an Azure Storage Queue. The function is hosted in an Azure Function App on the Flex Consumption plan.
