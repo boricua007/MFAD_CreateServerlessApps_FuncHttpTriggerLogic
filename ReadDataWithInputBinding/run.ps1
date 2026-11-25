@@ -1,24 +1,21 @@
 using namespace System.Net
 
-param($req, $inputBlob, $TriggerMetadata)
+param($req, $bookmark, $TriggerMetadata)
 
-# 2026-11-24 class assignment: read blob data through an Azure Functions input binding.
-$name = $req.Query.name
-if (-not $name) {
-    $name = $req.Body.name
-}
+# Class assignment: look up a bookmark by ID using a Cosmos DB input binding.
+$id = $req.Query.id
 
-if (-not $name) {
+if ([string]::IsNullOrWhiteSpace($id)) {
     $statusCode = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name in the query string or request body."
+    $body = "Please pass a bookmark ID in the query string."
 }
-elseif ($null -eq $inputBlob) {
+elseif ($null -eq $bookmark) {
     $statusCode = [HttpStatusCode]::NotFound
-    $body = "Blob '$name' was not found in the samples-workitems container."
+    $body = "Bookmark '$id' was not found."
 }
 else {
     $statusCode = [HttpStatusCode]::OK
-    $body = [string]$inputBlob
+    $body = [string]$bookmark.url
 }
 
 Push-OutputBinding -Name res -Value ([HttpResponseContext]@{

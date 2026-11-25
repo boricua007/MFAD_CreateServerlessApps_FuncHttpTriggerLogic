@@ -13,11 +13,14 @@
       "name": "res"
     },
     {
-      "type": "blob",
+      "type": "cosmosDB",
       "direction": "in",
-      "name": "inputBlob",
-      "path": "samples-workitems/{name}",
-      "connection": "AzureWebJobsStorage"
+      "name": "bookmark",
+      "databaseName": "func-io-learn-db",
+      "containerName": "Bookmarks",
+      "connection": "CosmosDBConnection",
+      "id": "{Query.id}",
+      "partitionKey": "{Query.id}"
     }
   ]
 }
