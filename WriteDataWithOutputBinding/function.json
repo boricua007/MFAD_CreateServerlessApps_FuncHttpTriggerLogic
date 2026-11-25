@@ -1,0 +1,34 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "bookmark",
+      "databaseName": "func-io-learn-db",
+      "containerName": "Bookmarks",
+      "connection": "CosmosDBConnection",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "newbookmark",
+      "databaseName": "func-io-learn-db",
+      "containerName": "Bookmarks",
+      "connection": "CosmosDBConnection"
+    }
+  ]
+}
